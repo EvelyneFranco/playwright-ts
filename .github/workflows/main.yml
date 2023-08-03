@@ -1,0 +1,35 @@
+name: Playwright Tests
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+jobs:
+  test:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 18
+    - name: Install dependencies
+      run: npm ci
+      #test
+    - name: Run Playwright tests
+      run: npx playwright test
+    - uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: playwright-report
+        path: playwright-report/
+        retention-days: 30
+        #slack
+    - name: Send Playwright test report to Slack
+      uses: rtCamp/action-slack-notify@v2.3.0
+      with:
+        status: ${{ job.status }}
+        text: 'Playwright tests have completed.'
+      env:
+        #best practice is to have this in secrests secrets.SLACK_WEBHOOK 
+        SLACK_WEBHOOK: https://hooks.slack.com/services/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 
