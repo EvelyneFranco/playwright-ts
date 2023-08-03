@@ -26,7 +26,7 @@ jobs:
         retention-days: 30
         #slack
     - name: Send Playwright test report to Slack
-      uses: rtCamp/action-slack-notify@v2.3.0
+      uses: rtCamp/action-slack-notify@v2
       with:
         status: ${{ job.status }}
         text: 'Playwright tests have completed.'
