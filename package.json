@@ -1,0 +1,21 @@
+{
+  "name": "automation-exercise",
+  "version": "1.0.0",
+  "description": "This repository contains an exercise for practicing test automation using Playwright with TypeScript.",
+  "author": {
+    "name": "Lively, Inc."
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "play": "playwright test --project=chromium"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^8.0.2",
+    "@playwright/test": "^1.36.2"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1"
+  }
+}
