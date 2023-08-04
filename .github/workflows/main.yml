@@ -34,4 +34,4 @@ jobs:
         text: 'Playwright tests have completed.'
       env:
         #best practice is to have this in secrests secrets.SLACK_WEBHOOK 
-        SLACK_WEBHOOK: https://hooks.slack.com/services/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 
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
