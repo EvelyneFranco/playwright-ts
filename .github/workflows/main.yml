@@ -30,10 +30,10 @@ jobs:
     - name: Send Playwright test report to Slack
       uses: rtCamp/action-slack-notify@v2
       with:
-        payload-file-path: "./playwright-report/index.html"
-        slack-message: "Test Results: ${{ job.status }}"
-        fields: repo,message,commit,author,action,eventName,ref,workflow,job,took
-        #text: 'Playwright tests have completed.'
+        args: |
+          --payload-file-path ./playwright-report/index.html
+          --slack-message "Test Results: ${{ job.status }}"
+          --fields repo,message,commit,author,action,eventName,ref,workflow,job,took
       env:
         #best practice is to have this in secrests secrets.SLACK_WEBHOOK 
         SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
