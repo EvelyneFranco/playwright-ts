@@ -31,6 +31,7 @@ jobs:
       uses: rtCamp/action-slack-notify@v2
       with:
         status: ${{ job.status }}
+        fields: repo,message,commit,author,action,eventName,ref,workflow,job,took
         text: 'Playwright tests have completed.'
       env:
         #best practice is to have this in secrests secrets.SLACK_WEBHOOK 
